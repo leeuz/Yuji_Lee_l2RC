@@ -24,7 +24,7 @@ Subsystems: **[RobotContainer.java]**
 
 ### How does the code work?
 Write about how it works here
-
+**[A PID controller for a robot adjusts its movements to minimize the difference between a target (like position or speed) and the actual performance.]**
 
 
 
