@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Drivetrain extends SubsystemBase {
+public class DriveTrain extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   private final WPI_TalonSRX leftDriveTalon;
   private final WPI_TalonSRX rightDriveTalon;
@@ -26,7 +26,7 @@ public class Drivetrain extends SubsystemBase {
   private final AHRS navX = new AHRS(SPI.Port.kMXP);
 
     /**Creates a new ExampleSubstem */
-    public Drivetrain() { 
+    public DriveTrain() { 
       leftDriveTalon = new WPI_TalonSRX(Constants.DriveTrainPort.leftDriveTalonPort);
       rightDriveTalon = new WPI_TalonSRX(Constants.DriveTrainPort.rightDriveTalonPort);
 
