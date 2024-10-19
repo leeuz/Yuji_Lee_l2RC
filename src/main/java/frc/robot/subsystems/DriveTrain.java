@@ -13,7 +13,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj2.command.Command;
+//import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -23,15 +23,20 @@ public class DriveTrain extends SubsystemBase {
   private final WPI_TalonSRX rightDriveTalon;
 
 
-  private final AHRS navX = new AHRS(SPI.Port.kMXP);
+  private AHRS navX = new AHRS(SPI.Port.kMXP);
 
     /**Creates a new ExampleSubstem */
     public DriveTrain() { 
       leftDriveTalon = new WPI_TalonSRX(Constants.DriveTrainPort.leftDriveTalonPort);
       rightDriveTalon = new WPI_TalonSRX(Constants.DriveTrainPort.rightDriveTalonPort);
 
+      navX = new AHRS(SPI.Port.kMXP);
+
       leftDriveTalon.setNeutralMode(NeutralMode.Coast);
       rightDriveTalon.setNeutralMode(NeutralMode.Coast);
+
+      leftDriveTalon.setSensorPhase(true);
+      rightDriveTalon.setSensorPhase(true);
 
       leftDriveTalon.configFactoryDefault();
       leftDriveTalon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
@@ -58,7 +63,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public double getAngle() {
-      return navX.getAngle();
+      return -navX.getAngle();
   }
 
   public void reset() {
